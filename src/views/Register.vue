@@ -1,80 +1,69 @@
 <template>
-<!-- Login -->
-<div class="Forms">
-<div class="container-login">
-  <div class="login-box">
-    <div class="login">
-      <h1>Sign In</h1>
+  <div class="container-register">
+  <div class="register-box">
+    <div class="register">
+      <h1>Sign Up</h1>
+      <input id="username" type="text" placeholder="Full_Name" />
+       <label for="username" class="register-input-icon">
+         <i class="fa fa-id-badge"></i>
+      </label>
       <input id="username" type="text" placeholder="Email" />
-      <label for="username" class="login-input-icon">
+      <label for="username" class="register-input-icon">
         <i class="fa fa-user"></i>
       </label>
       <input id="password" type="password" placeholder="Password" />
-      <label for="password" class="login-input-icon">
+      <label for="password" class="register-input-icon">
         <i class="fa fa-lock"></i>
       </label>
-      <div class="login-remember">
-        <label class="login-checkbox">
+      <div class="register-remember">
+        <label class="register-checkbox">
           <input type="checkbox">
           <span class="checkmark"></span>
         </label>
-        <span class="login-remember-text">
+        <span class="register-remember-text">
           &nbsp;&nbsp;Remember
         </span>
       </div>
-      <button>Login</button>
-      <span class="login-separator"></span>
+      <button>Register</button>
+      <span class="register-separator"></span>
     </div>
   </div>
 </div>
-</div>
-    <div v-if="users">
-        Welcome {{ users.Full_Name }}
-    </div> 
 </template>
 <script>
 export default {
-    computed: {
-        users() {
-            return this.$store.state.users;
-        }
+  data() {
+    return {
+      FullName: "",
+      email: "",
+      password: "",
+    };
+  },
+  computed: {
+    users() {
+      return this.$store.state.users;
     },
-    data() {
-        return{
-            email: "",
-            password: "",
-        }
-    },
-    methods: {
-        login() {
-           this.$store.dispatch("login", { 
-            email: this.email, 
-            password: this.password })
-        },
-        register() {
-            return this.$store.dispatch("register", {
-            FullName: this.Full_Name,
-            email: this.email,
-            password: this.password,
+  },
+  methods: {
+    register() {
+      return this.$store.dispatch("register", {
+        FullName: this.FullName,
+        email: this.email,
+        password: this.password,
       });
     },
-    }, 
+  },
 };
 </script>
 <style scoped>
-@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-.Forms{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:space-evenly;
-}
-.container-login {
+/* Register */
+.container-register {
   height: 100vh;
   display: flex;
   flex-flow: column;
 }
 
-.header-login {
+.header-register {
   width: 100%;
   background: #0b0121;
   border-bottom-style: solid;
@@ -82,17 +71,17 @@ export default {
   border-bottom-color: #633fb3;
 }
 
-.header-login-box a {
+.header-register-box a {
   text-decoration: none;
   color: #fff;
   font-family: serif;
 }
 
-.header-login-box a:hover {
+.header-register-box a:hover {
   color: #633fb3;
 }
 
-.header-login-box {
+.header-register-box {
   display: flex;
   padding: 15px 50px;
 }
@@ -101,7 +90,7 @@ export default {
   flex: auto;
 }
 
-.login-box {
+.register-box {
   display: flex;
   justify-content: center;
   top: 50%;
@@ -109,18 +98,17 @@ export default {
   animation: box-login 2s;
 }
 
-@keyframes box-login {
+@keyframes box-register {
   0% {
     transform: rotateY(100deg);
   }
-
   50%,
   100% {
     transform: rotateY(0deg);
   }
 }
 
-.login {
+.register {
   display: flex;
   flex-direction: column;
   width: 370px;
@@ -129,22 +117,22 @@ export default {
   border-radius: 15px;
   box-shadow: 0 0 3px #0b012185, 0 0 5px #0b012185, 0 0 15px #0b012185,
     0 0 40px #0b012185;
-  margin-bottom: 66%;
+  margin-bottom: 16%;
 }
 
-.login h1 {
+.register h1 {
   text-align: center;
   font-size: 26px;
   padding: 20px;
 }
 
-.login input {
+.register input {
   display: inherit;
   flex-direction: inherit;
   padding: 10px;
 }
 
-.login-input-icon {
+.register-input-icon {
   position: relative;
   align-self: flex-end;
   top: -38px;
@@ -157,7 +145,7 @@ export default {
   color: rgb(136, 136, 136);
 }
 
-.login input[type="text"],
+.register input[type="text"],
 input[type="password"] {
   margin-bottom: 1em;
   background: rgba(255, 255, 255, 0);
@@ -166,34 +154,34 @@ input[type="password"] {
   border-bottom-color: #633fb3;
   border-radius: 15px;
   color: #fff;
-  animation: login-input-focus-initial 1s normal forwards;
+  animation: register-input-focus-initial 1s normal forwards;
   padding-right: 30px;
 }
 
-.login input[type="text"]:focus,
+.register input[type="text"]:focus,
 input[type="password"]:focus {
   animation: login-input-focus 1s normal forwards;
 }
 
-.login-remember {
+.register-remember {
   display: flex;
   margin-bottom: 1em;
   align-items: center;
 }
 
-.login-remember-text {
+.register-remember-text {
   align-self: flex-start;
   font-family: serif;
 }
 
-.login-checkbox {
+.register-checkbox {
   color: rgb(136, 136, 136);
   width: 15px;
   height: 15px;
   display: inherit;
 }
 
-.login-checkbox input {
+.register-checkbox input {
   cursor: pointer;
   display: none;
 }
@@ -206,7 +194,7 @@ input[type="password"]:focus {
   border-radius: 5px;
 }
 
-.login input:checked ~ .checkmark {
+.register input:checked ~ .checkmark {
   background-color: #633fb3;
 }
 
@@ -215,11 +203,11 @@ input[type="password"]:focus {
   display: none;
 }
 
-.login-checkbox input:checked ~ .checkmark:after {
+.register-checkbox input:checked ~ .checkmark:after {
   display: block;
 }
 
-.login .checkmark:after {
+.register .checkmark:after {
   left: 5px;
   top: 2px;
   width: 3px;
@@ -230,7 +218,7 @@ input[type="password"]:focus {
   position: relative;
 }
 
-.login button {
+.register button {
   cursor: pointer;
   padding: 20px;
   border-radius: 15px;
@@ -240,23 +228,23 @@ input[type="password"]:focus {
   animation: login-button 1s normal forwards;
 }
 
-.login button:hover  {
+.register button:hover  {
   background-image: linear-gradient(-218deg, #4c2d8f 70%, #ae95e4 92%);
   animation: login-button-hover 1s normal forwards;
 }
 
-.login-social-media {
+.register-social-media {
   display: inherit;
   justify-content: center;
   margin-top: 15px;
 }
 
-.login-social-media img {
+.register-social-media img {
   padding: 0 5px;
   cursor: pointer;
 }
 
-.login-separator {
+.register-separator {
   width: 70%;
   margin: auto;
   height: 2px;
@@ -265,44 +253,40 @@ input[type="password"]:focus {
 }
 
 
-@keyframes login-input-focus-initial {
+@keyframes register-input-focus-initial {
   0% {
     font-size: 12px;
   }
-
   50%,
   100% {
     font-size: 14px;
   }
 }
 
-@keyframes login-input-focus {
+@keyframes register-input-focus {
   0% {
     font-size: 14px;
   }
-
   50%,
   100% {
     font-size: 12px;
   }
 }
 
-@keyframes login-button {
+@keyframes register-button {
   0% {
     background-size: 200%;
   }
-
   50%,
   100% {
     background-size: 100%;
   }
 }
 
-@keyframes login-button-hover {
+@keyframes register-button-hover {
   0% {
     background-size: 100%;
   }
-
   50%,
   100% {
     background-size: 200%;

@@ -1,50 +1,92 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex";
+import router from "@/router";
 
-export default createStore({
+export default createStore({  
   state: {
     users: null,
     Products: null,
-    Product: null
+    Product: null,
   },
-  getters: {
-  },
+  getters: {},
   mutations: {
     setusers: (state, users) => {
-      state.users =users
+      state.users = users;
     },
     setProducts: (state, Products) => {
-      state.Products = Products
+      state.Products = Products;
     },
-    setProduct: (state, Product) => {
-      state.Product = Product
-    }
+    setProduct: (state,Product) => {
+      state.ProdProduct = Product;
+    },
   },
   actions: {
+    logout: async (context) => {
+      context.commit("setusers", null);
+      window.location = "/login";
+    },
     login: async (context, data) => {
-      const{email, password} = data
-      const response = await fetch(`http://localhost:6969/users?email=${email}&password=${password}`)
+      const { email, password } = data;
+      const response = await fetch(
+        `https://e-com-back-end-work.herokuapp.com/users?email=${email}&password=${password}`
+      );
       const usersData = await response.json();
-      console.log(usersData)
-      context.commit("setusers", usersData[0]) 
-     },
+      console.log(usersData);
+      context.commit("setusers", usersData[0]);
+      // router.push("/Products");
+    },
     register: async (context, data) => {
-      const{FullName, email, password} = data
-      fetch('http://localhost:6969/users', {
-        method: 'POST',
+      const { Full_Name, Email, Password } = data;
+      fetch("https://e-com-back-end-work.herokuapp.com/users", {
+        method: "POST",
         body: JSON.stringify({
-            FullName: FullName,
-            email: email,
-            password: password,
+          Full_Name: Full_Name,
+          Email: Email,
+          Password: Password,
         }),
         headers: {
-            'Content-type': 'application/json; charset=UTF-8',
+          "Content-type": "application/json; charset=UTF-8",
         },
-        })
+      })
         .then((response) => response.json())
         .then((json) => context.commit("setusers", json));
-
-    }
+    },
+    getProducts: async (context) => {
+      fetch("https://e-com-back-end-work.herokuapp.com/products")
+        .then((res) => res.json())
+        .then((Products) => {context.commit("setProducts", Products)});
+    },
+    getProduct: async (context, product_id) => {
+      fetch("https://e-com-back-end-work.herokuapp.com/products" + product_id)
+        .then((res) => res.json())
+        .then((Product) => context.commit("setProduct", Product));
+    },
+    deleteProduct: async (context, id) => {
+      fetch("https://e-com-back-end-work.herokuapp.com/products" + id, {
+        method: "DELETE",
+      }).then(() => context.dispatch("getProducts"));
+    },
+    createProduct: async (context, Product) => {
+      fetch("https://e-com-back-end-work.herokuapp.com/products", {
+        method: "POST",
+        body: JSON.stringify(Product),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then(() => context.dispatch("getProducts"));
+    },
+    updateProduct: async (context, Product) => {
+      fetch("https://e-com-back-end-work.herokuapp.com/products" + Product.id, {
+        method: "PUT",
+        body: JSON.stringify(Product),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then(() => context.dispatch("getProducts"));
+    },
   },
-  modules: {
-  }
-})
+  modules: {},
+});

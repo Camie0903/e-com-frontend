@@ -14,8 +14,12 @@
               </li> 
                
                 <li>
-                    <router-link to="/login" class="nav-link mx-2 text-white"><i class="fa-solid fa-user"></i></router-link>
+                    <router-link to="/login" class="nav-link mx-2 text-white">login</router-link>
                 </li>
+                <li>
+                    <router-link to="/register" class="nav-link mx-2 text-white">Register</router-link>
+                </li>
+
                
                 <!-- <li>
                     <router-link to="/projects" class="nav-link mx-2 text-white">Projects</router-link> 
