@@ -6,6 +6,31 @@ export default createStore({
     users: null,
     Products: null,
     Product: null,
+    authModal:{
+      visibility:false
+    },
+    callbackAction: {
+      name: null,
+      payload: null
+    },
+    addProductToCart({ dispatch }, payload) {
+      if (userNotLoggedIn) {
+        dispatch(
+          "AuthModal/showAuthModal",
+          {
+           callbackAction: {
+            name: "CheckoutModule/addProductToCart",
+            payload
+           }
+          },
+          { root:true }
+        )
+      }
+        return axios.post(
+        'https://e-com-back-end-work.herokuapp.com/users',
+        payload
+      )
+    }
   },
   getters: {},
   mutations: {
@@ -18,6 +43,9 @@ export default createStore({
     setProduct: (state,Product) => {
       state.ProdProduct = Product;
     },
+    UPDATE_AUTH_MODAL_VISIBILITY(state, payload) {
+      state.authModal.visibility = payload.visibility;
+    }
   },
   actions: {
     logout: async (context) => {
@@ -87,6 +115,12 @@ export default createStore({
         .then((response) => response.json())
         .then(() => context.dispatch("getProducts"));
     },
-  },
+    showAuthModal({ commit }) {
+      commit("UPDATE_AUTH_MODAL_VISIBILITY", {visibility: true});
+    },
+    hideAuthModal({ commit }){
+      commit("UPDATE_AUTH_MODAL_VISIBILITY", { visibility: false });
+    }
+    },
   modules: {},
 });
