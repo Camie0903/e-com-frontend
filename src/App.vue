@@ -1,6 +1,9 @@
 <template>
   <Navbar/>
   <router-view/>
+    <v-footer>
+    <Footer />
+  </v-footer>
 </template>
 <script>
 import Navbar from "./components/Navbar.vue";
@@ -20,6 +23,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  min-height: 100vh;
 }
 
 nav {
@@ -34,4 +38,6 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
 }
+
+
 </style>

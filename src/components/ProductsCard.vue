@@ -1,7 +1,7 @@
 <template>
     <div class="col-md-3">
     
-    <router-link class="router-text" :to="{ name: 'SingleProduct', params: { id: product.product_id } }">
+    <router-link class="router-text" :to = "{ name: 'SingleProduct', params: { id: product.id } }">
       <div class="card m-3" style="width: 18rem">
         <img v-bind:src="product.image1" class="img-fluid" />
         <div class="card-body">
@@ -16,8 +16,8 @@
 </template>
 <script>
     export default {
-        name: "product-card",
-        props: ['product'],
+        // name: "product-card",
+        // props: ['product'],
         
     };
     

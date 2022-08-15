@@ -1,32 +1,41 @@
 <template>
    <div class="onecard">
-    <div v-if="Product">
+    <div v-if = "product">
+    <div v-for ="product in product"
+      v-bind:key="product.id"> 
       <div class="d-flex justify-content-center">
         <div class="card" style="width: 30rem">
-          <img v-bind:src="Product.Img" class="img-fluid" style="width: 30rem"  />
+          <img v-bind:src="product.image1" class="img-fluid" style="width: 30rem"  />
           <div class="card-body">
-            <p class="card-text">{{ Product.name }}</p>
-            <p class="card-text">{{ Product.Date }}</p>
-            <p class="card-text">R{{ Product.price }}</p>
+            <p class="card-text">{{ product.name }}</p>
+            <p class="card-text">{{ product.stock }}</p>
+            <p class="card-text">R{{ product.price }}</p>
             <!-- <p class="card-text">{{ Product.descriptions }}</p> -->
           </div>
         </div>
+      </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+// import ProductsCard from "@/components/ProductsCard.vue";
 export default {
-  props: ["id"],
+  // props: ["id"],
+  // components: { 
+  //   ProductsCard,
+  //    },
   data() {
     return {
-      event: null,
+      product: null,
     };
   },
   mounted() {
-    fetch("http://localhost:6969/products" + this.product_id)
+    fetch("http://localhost:6969/products/" + this.$route.params.id)
       .then((res) => res.json())
       .then((data) => (this.product = data));
+
+      console.log(this.product);
   },
 };
 </script>

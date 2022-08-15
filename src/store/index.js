@@ -1,4 +1,6 @@
 import { createStore } from "vuex";
+
+// const jwt = require('jsonwebtoken');
 import router from "@/router";
 
 export default createStore({  
@@ -55,7 +57,7 @@ export default createStore({
     login: async (context, data) => {
       const { email, password } = data;
       const response = await fetch(
-        `https://e-com-back-end-work.herokuapp.com/users?email=${email}&password=${password}`
+        `http://localhost:6969/users/login`
       );
       const usersData = await response.json();
       console.log(usersData);
@@ -63,38 +65,53 @@ export default createStore({
       // router.push("/Products");
     },
     register: async (context, data) => {
-      const { Full_Name, Email, Password } = data;
-      fetch("https://e-com-back-end-work.herokuapp.com/users", {
+      encryptPassword(password)          
+          const salt = bcrypt.genSaltSync(10)
+          
+   
+      const { full_name, email, password, billing_address, default_shipping_address, country, phone, user_type } = data;
+      fetch("http://localhost:6969/users/register", {
+        
         method: "POST",
+        
         body: JSON.stringify({
-          Full_Name: Full_Name,
-          Email: Email,
-          Password: Password,
+          
+          full_name: full_name,
+          email: email,
+          password: hash,
+          billing_address: billing_address,
+          default_shipping_address: default_shipping_address,
+          country: country,
+          phone: phone,
+          user_type: user_type,
         }),
+        
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
+        
       })
-        .then((response) => response.json())
-        .then((json) => context.commit("setusers", json));
+      .then((response) => response.json())
+      .then((json) => context.commit("setusers", json));
+      return bcrypt.hashSync(password, salt)
     },
     getProducts: async (context) => {
-      fetch("https://e-com-back-end-work.herokuapp.com/products")
+      fetch("http://localhost:6969/products")
         .then((res) => res.json())
         .then((Products) => {context.commit("setProducts", Products)});
     },
-    getProduct: async (context, product_id) => {
-      fetch("https://e-com-back-end-work.herokuapp.com/products" + product_id)
-        .then((res) => res.json())
-        .then((Product) => context.commit("setProduct", Product));
-    },
+    // getProduct: async (context, id) => {
+    //   fetch("https://e-com-back-end-work.herokuapp.com/products" + id)
+    //     .then((res) => res.json())
+    //     .then((Product) => context.commit("setProduct", Product));
+    // },
     deleteProduct: async (context, id) => {
-      fetch("https://e-com-back-end-work.herokuapp.com/products" + id, {
+      fetch("http://localhost:6969/products/" + id, {
         method: "DELETE",
       }).then(() => context.dispatch("getProducts"));
     },
     createProduct: async (context, Product) => {
-      fetch("https://e-com-back-end-work.herokuapp.com/products", {
+      fetch("http://localhost:6969/products", {
         method: "POST",
         body: JSON.stringify(Product),
         headers: {
@@ -105,7 +122,7 @@ export default createStore({
         .then(() => context.dispatch("getProducts"));
     },
     updateProduct: async (context, Product) => {
-      fetch("https://e-com-back-end-work.herokuapp.com/products" + Product.id, {
+      fetch("http://localhost:6969/products" + Product.id, {
         method: "PUT",
         body: JSON.stringify(Product),
         headers: {

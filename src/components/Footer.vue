@@ -2,19 +2,18 @@
   <div class="wave">
     <v-footer class="wave">
       <p>
-        20 Lower Long Street<span>
-          Riversdale (Located on the Garden Route)</span
+        20 Upper Short Road<span>
+          Somewhere in Towm </span
         >
       </p>
       <span class="right">
         <p>Western Cape<span> South Africa</span></p>
         <p class="contact">
-          C-A-S-H ESTATE Contacts For enquires on existing events:<br />
-          info@cashestate.co.za 023 340 4220<br />
-          For bookings: admin@cashestate.co.za 023 340 4220
+          Alliance Anime Contacts For enquires on existing products:<br />
+          info@allianceanime.co.za 023 340 4220<br />
         </p>
       </span>
-      <p class="copy">Made with love @ C-A-S-H EVENTS</p>
+      <p class="copy">Made with love @ Alliance Anime</p>
     </v-footer>
   </div>
 </template>
