@@ -1,8 +1,8 @@
-
 <template>
   <header :class="{ 'scrolled-nav': scrollPosition }">
-    <nav class="branding">
-        <h1 class="cash">  Alliance Anime </h1>
+  <div class="branding">
+  <nav >
+      <h1 class="cash">  Alliance Anime </h1>
       <ul v-show="!mobile" class="navigation">
         <!-- <li>
           <router-link class="link" to="/">Home</router-link>
@@ -66,6 +66,7 @@
         </ul>
       </transition>
     </nav>
+    </div>
   </header>
 </template>
 <script>
@@ -111,7 +112,7 @@ export default {
 };
 </script>
 
-<style>
+<style >
 header {
   width: 100%;
   transition: 0.5s ease all;
@@ -123,10 +124,12 @@ nav {
     transition: 0.5s ease all;
     width: 100%;
     margin: 0;
+    /* margin-bottom: -1%; */
     position: fixed;
-    background-color: rgba(29, 27, 27, 0.258);
-    z-index: 99;
-    height: 50px;
+    background-image: linear-gradient(to left, #21af85, #00a0a7, #008bbf, #0071be, #67509f);  /* background-color: rgba(167, 165, 196, 0.3); */
+    z-index: 100;
+    height: 30px;
+    margin-top: 103px;
 }
 
 .SB {
@@ -172,7 +175,8 @@ li {
 .branding {
   display: flex;
   align-items: center;
-  margin-top: -4%;
+  margin-top: -1%;
+
 }
 
 .navigation {

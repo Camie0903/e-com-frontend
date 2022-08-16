@@ -41,13 +41,16 @@ export default {
 };
 </script>
 <style scoped>
+
 .well{
   /* margin-left: 600px; */
   margin-bottom: 30px;
+  color:black;
 }
 .Login {
   padding-top: 80px;
   height: 80vh;
+background-image: linear-gradient(to left, #21af85, #00a0a7, #008bbf, #0071be, #67509f);  /* background-color: rgba(167, 165, 196, 0.3); */
 }
 
 .container {
@@ -55,7 +58,7 @@ export default {
   padding: auto;
   width: 350px;
   height: 390px;
-  background-color: rgba(167, 165, 196, 0.3);
+background-image: linear-gradient(to left, #21af85, #00a0a7, #008bbf, #0071be, #67509f);  /* background-color: rgba(167, 165, 196, 0.3); */
   backdrop-filter: blur(3px);
   border: 2px solid white;
   border-radius: 10px;
@@ -66,7 +69,7 @@ export default {
   margin: 35px;
    border: 0;
   outline:0;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid black;
   width: 50%;
   font-size: 20px;
   background: transparent;
@@ -75,9 +78,9 @@ export default {
 
 .login-form-password{
   margin: 35px;
-    border: 0;
+  border: 0;
   outline:0;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid black;
   width: 50%;
   font-size: 20px;
   background: transparent;
@@ -90,6 +93,7 @@ export default {
   border: none;
   font-weight: bolder;
   font-size: 20px;
+  
 }
 
 

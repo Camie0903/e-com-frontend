@@ -49,17 +49,22 @@ h1 {
   display: flex;
   justify-content: center;
   padding-top: 100px;
+  color:black;
 }
 .regis-page[data-v-63ae9146] {
     height: 150vh;
-}
+    background-image: linear-gradient(to left, #21af85, #00a0a7, #008bbf, #0071be, #67509f);  /* background-color: rgba(167, 165, 196, 0.3); */
 
+}
+/* form{
+  width:50%
+} */
 .container[data-v-63ae9146] {
     width: 350px;
     height: auto;
-    background-color: rgba(167, 165, 196, 0.3);
+  background-image: linear-gradient(to left, #21af85, #00a0a7, #008bbf, #0071be, #67509f);  /* background-color: rgba(167, 165, 196, 0.3); */
     backdrop-filter: blur(3px);
-    border: 2px solid white;
+    border: 2px solid black;
     border-radius: 10px;
     background-clip: padding-box;
     margin: auto;
@@ -72,8 +77,8 @@ h1 {
   margin: 35px;
     border: 0;
   outline:0;
-  border-bottom: 2px solid white;
-  width: 50%;
+  border-bottom: 2px solid black;
+  width: 73%;
   font-size: 20px;
   background: transparent;
   /* color: white; */

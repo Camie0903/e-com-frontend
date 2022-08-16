@@ -23,10 +23,10 @@
     
 
 </script>
-<style>
+<style scoped>
 .img-fluid {
   width: 18rem;
-  height: 15rem;
+  height: 50px;
   border-radius: 5px;
   transition: 0.2 linear;
 }

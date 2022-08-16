@@ -58,10 +58,25 @@ export default {
 </script>
 <style scoped>
 .row {
-  margin-top: 50px;
+  /* margin-top: 50px;
   display: flex;
   flex-wrap: wrap;
+  gap: 5rem; */
+  min-height:50px;
+  min-width: 50px;
+}
+img.img-fluid{
+  height:20rem;
+  /* margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5rem; */
+}
+.col-md-3 {
+    display: flex;
+    flex-wrap: wrap;
   gap: 5rem;
+  margin-top: 10%;
 }
 .SB {
   margin-top: 53px;
@@ -74,5 +89,11 @@ export default {
   font-size: 20px;
   background: transparent;
   color: black;
+}
+
+a:-webkit-any-link {
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
 }
 </style>

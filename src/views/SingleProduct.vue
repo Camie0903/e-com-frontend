@@ -8,7 +8,7 @@
           <img v-bind:src="product.image1" class="img-fluid" style="width: 30rem"  />
           <div class="card-body">
             <p class="card-text">{{ product.name }}</p>
-            <p class="card-text">{{ product.stock }}</p>
+            <p class="card-text">{{ product.descriptions }}</p>
             <p class="card-text">R{{ product.price }}</p>
             <!-- <p class="card-text">{{ Product.descriptions }}</p> -->
           </div>
@@ -43,5 +43,9 @@ export default {
     .onecard{
       padding: 50px;
     }
+    .d-flex.justify-content-center {
+    margin-top: 5%;
+    margin-left: 31%;
+}
     
 </style>
